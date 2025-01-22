@@ -135,27 +135,25 @@ class PluginList:
             urls.append(info.package_url)
         return urls
 
-    @classmethod
-    def from_manifest(cls, path: Path) -> "PluginList":
-        plugins = cls()
+    def add_manifest(self, path: Path):
         if path.suffix == ".json":
             with open(path) as f:
                 data = Munch.fromJSON(f.read())
             if "versions" in data:
                 for item in data["versions"]:
-                    plugins.items.append(Plugin(slug=item["name"], version=item["version"]))
+                    self.items.append(Plugin(slug=item["name"], version=item["version"]))
 
         elif path.suffix == ".toml":
             raise NotImplementedError("Reading plugin manifests from TOML not implemented yet")
 
         else:
             raise click.FileError(str(path), f"Unsupported file extension: {path.suffix}")
+        return self
 
-        return plugins
-
-    def add_by_prefix(self, prefix: str):
+    def add_package(self, prefix: str):
         for plugin in self._catalog.get_plugins_by_prefix(prefix):
             self.items.append(Plugin(slug=plugin.slug, version=plugin.version))
+        return self
 
 
 @click.group()
@@ -174,9 +172,10 @@ def plugin_urls(path: Path):
     """
     logger.info(f"Using manifest path: {path}")
 
-    plugins = PluginList.from_manifest(path)
-    plugins.add_by_prefix("volkovlabs-")
-    plugins.add_by_prefix("grafana-image-renderer")
+    plugins = PluginList()
+    plugins \
+        .add_manifest(path) \
+        .add_package(prefix="volkovlabs-")
 
     print("\n".join(plugins.package_urls), file=sys.stdout)
 
