@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# ruff: noqa: S603,S607
 """
 ## About
 Build Grafana Nuraya.
@@ -236,7 +237,7 @@ def update_manifest(manifest: Path):
     plugins = get_plugins_standard(manifest)
     for plugin in plugins.items:
         plugin.version = plugins._catalog.find_plugin(plugin.slug).version
-    print(plugins.to_manifest())
+    print(plugins.to_manifest())  # noqa: T201
 
 
 @cli.command()
@@ -247,7 +248,7 @@ def plugin_urls(path: Path):
     """
     logger.info(f"Using manifest path: {path}")
     plugins = get_plugins_standard(path)
-    print("\n".join(plugins.package_urls), file=sys.stdout)
+    print("\n".join(plugins.package_urls), file=sys.stdout)  # noqa: T201
 
 
 @cli.command()
