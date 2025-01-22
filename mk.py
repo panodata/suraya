@@ -8,6 +8,7 @@ Build Grafana Nuraya.
 uv run mk.py --version nightly
 ```
 """
+
 # /// script
 # requires-python = ">=3.10"
 # dependencies = [
@@ -17,14 +18,13 @@ uv run mk.py --version nightly
 #     "munch<5",
 # ]
 # ///
+import logging
 import sys
+import typing as t
 from pathlib import Path
 
 import attrs
 import click
-import logging
-import typing as t
-
 import hishel
 from munch import Munch
 
@@ -44,6 +44,7 @@ class Plugin:
     """
     Manage minimal plugin information.
     """
+
     slug: str
     version: str
 
@@ -53,6 +54,7 @@ class GrafanaPluginInfo(Plugin):
     """
     Manage extended plugin information.
     """
+
     homepage_url: str
     repository_url: str
     package_url: str
@@ -62,7 +64,9 @@ class GrafanaPluginCatalog:
     """
     Manage the Grafana plugin catalog.
     """
+
     URL = "https://grafana.com/api/plugins"
+
     def __init__(self):
         self.data = Munch.fromDict(http.get(self.URL).json())
 
@@ -81,6 +85,7 @@ class GrafanaPluginCatalog:
         for item in self.items():
             if item.slug == slug:
                 return self.i2p(item)
+        raise ValueError(f"Plugin {slug} not found")
 
     def get_plugins_by_prefix(self, prefix: str):
         # TODO: Optimize access by indexing by slug.
@@ -113,6 +118,7 @@ class GrafanaPluginCatalog:
             return url
         if "volkovlabs" in slug:
             return f"https://github.com/VolkovLabs/{slug}"
+        return None
 
 
 @attrs.define()
@@ -130,7 +136,10 @@ class PluginList:
         for item in self.items:
             info = self._catalog.find_plugin(slug=item.slug)
             if info is None:
-                logger.error(f"Plugin does not exist in Grafana plugin catalog, skipping: {item.slug}")
+                logger.error(
+                    f"Plugin does not exist in Grafana "
+                    f"plugin catalog, skipping: {item.slug}"
+                )
                 continue
             urls.append(info.package_url)
         return urls
@@ -146,7 +155,9 @@ class PluginList:
                 raise NotImplementedError("Manifest file format not supported")
 
         elif path.suffix == ".toml":
-            raise NotImplementedError("Reading plugin manifests from TOML not implemented yet")
+            raise NotImplementedError(
+                "Reading plugin manifests from TOML not implemented yet"
+            )
 
         else:
             raise click.FileError(str(path), f"Unsupported file extension: {path.suffix}")
@@ -175,9 +186,7 @@ def plugin_urls(path: Path):
     logger.info(f"Using manifest path: {path}")
 
     plugins = PluginList()
-    plugins \
-        .add_manifest(path) \
-        .add_package(prefix="volkovlabs-")
+    plugins.add_manifest(path).add_package(prefix="volkovlabs-")
 
     print("\n".join(plugins.package_urls), file=sys.stdout)
 
