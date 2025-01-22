@@ -133,6 +133,8 @@ class PluginList:
     Manage a list of plugin items.
     """
 
+    tpl = "https://grafana.com/api/plugins/{name}/versions/{version}/download?os={os}&arch={arch}"
+
     items: t.List[Plugin] = attrs.field(default=[])
     _catalog: "GrafanaPluginCatalog" = attrs.field(factory=GrafanaPluginCatalog)
 
@@ -140,14 +142,22 @@ class PluginList:
     def package_urls(self) -> t.List[str]:
         urls = []
         for item in self.items:
-            info = self._catalog.find_plugin(slug=item.slug)
-            if info is None:
-                logger.error(
-                    f"Plugin does not exist in Grafana "
-                    f"plugin catalog, skipping: {item.slug}"
+            if item.slug and item.version:
+                url = self.tpl.format(
+                    name=item.slug, version=item.version, os="linux", arch="amd64"
                 )
-                continue
-            urls.append(info.package_url)
+            elif item.slug:
+                info = self._catalog.find_plugin(slug=item.slug)
+                if info is None:
+                    logger.error(
+                        f"Plugin does not exist in Grafana "
+                        f"plugin catalog, skipping: {item.slug}"
+                    )
+                    continue
+                url = info.package_url
+            else:
+                raise KeyError(f"Plugin not found: {item.slug}")
+            urls.append(url)
         return urls
 
     def add_manifest(self, path: Path):
@@ -169,9 +179,17 @@ class PluginList:
             raise click.FileError(str(path), f"Unsupported file extension: {path.suffix}")
         return self
 
-    def add_package(self, prefix: str):
-        for plugin in self._catalog.get_plugins_by_prefix(prefix):
-            self.items.append(Plugin(slug=plugin.slug, version=plugin.version))
+    def add_package(self, slug: str = None, version: str = None, prefix: str = None):
+        if slug and version:
+            self.items.append(Plugin(slug=slug, version=version))
+        elif prefix:
+            for plugin in self._catalog.get_plugins_by_prefix(prefix):
+                self.items.append(Plugin(slug=plugin.slug, version=plugin.version))
+        else:
+            raise KeyError(
+                f"Plugin not found or incomplete information: "
+                f"name={slug}, version={version}, prefix={prefix}"
+            )
         return self
 
 
@@ -180,7 +198,7 @@ def cli():
     """
     Grafana Nuraya Builder.
     """
-    logger.info("Starting Grafana Nuraya Builder")
+    logger.info("Starting Grafana Nuraya MK")
 
 
 @cli.command()
