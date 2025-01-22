@@ -9,6 +9,8 @@ uv run mk.py --version nightly
 ```
 """
 
+import json
+
 # /// script
 # requires-python = ">=3.10"
 # dependencies = [
@@ -197,6 +199,15 @@ class PluginList:
             )
         return self
 
+    def to_manifest(self):
+        data = {
+            "comment": "Plugins for Amazon Managed Grafana (AMG)",
+            "plugins": [
+                {"name": plugin.slug, "version": plugin.version} for plugin in self.items
+            ],
+        }
+        return json.dumps(data, indent=2)
+
 
 def get_plugins_standard(path: Path) -> PluginList:
     """
@@ -213,6 +224,19 @@ def cli():
     Grafana Nuraya Builder.
     """
     logger.info("Starting Grafana Nuraya MK")
+
+
+@cli.command()
+@click.argument("manifest", type=click.Path(exists=True, path_type=Path))
+def update_manifest(manifest: Path):
+    """
+    Update the plugin manifest to use the most recent version of each plugin.
+    """
+    logger.info(f"BOM manifest path: {manifest}")
+    plugins = get_plugins_standard(manifest)
+    for plugin in plugins.items:
+        plugin.version = plugins._catalog.find_plugin(plugin.slug).version
+    print(plugins.to_manifest())
 
 
 @cli.command()

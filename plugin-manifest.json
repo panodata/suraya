@@ -7,127 +7,127 @@
     },
     {
       "name": "alexanderzobnin-zabbix-app",
-      "version": "4.2.10"
+      "version": "4.6.1"
     },
     {
       "name": "dlopes7-appdynamics-datasource",
-      "version": "2.5.0"
+      "version": "3.10.4"
     },
     {
       "name": "grafana-athena-datasource",
-      "version": "2.8.0"
+      "version": "3.0.0"
     },
     {
       "name": "grafana-bigquery-datasource",
-      "version": "1.2.3"
+      "version": "2.0.1"
     },
     {
       "name": "grafana-clickhouse-datasource",
-      "version": "1.1.2"
+      "version": "4.5.1"
     },
     {
       "name": "grafana-clock-panel",
-      "version": "2.1.2"
+      "version": "2.1.8"
     },
     {
       "name": "grafana-cloudflare-datasource",
-      "version": "0.2.4"
+      "version": "0.1.2-preview"
     },
     {
       "name": "grafana-databricks-datasource",
-      "version": "0.3.0"
+      "version": "1.10.4"
     },
     {
       "name": "grafana-datadog-datasource",
-      "version": "2.3.13"
+      "version": "3.12.4"
     },
     {
       "name": "grafana-dynatrace-datasource",
-      "version": "3.4.3"
+      "version": "3.21.4"
     },
     {
       "name": "grafana-github-datasource",
-      "version": "1.4.0"
+      "version": "2.0.1"
     },
     {
       "name": "grafana-gitlab-datasource",
-      "version": "0.1.5"
+      "version": "2.3.11"
     },
     {
       "name": "grafana-googlesheets-datasource",
-      "version": "1.1.6"
+      "version": "2.0.1"
     },
     {
       "name": "grafana-honeycomb-datasource",
-      "version": "1.1.2"
+      "version": "2.7.7"
     },
     {
       "name": "grafana-iot-sitewise-datasource",
-      "version": "1.7.0"
+      "version": "1.25.2"
     },
     {
       "name": "grafana-iot-twinmaker-app",
-      "version": "1.6.2"
+      "version": "2.0.0"
     },
     {
       "name": "grafana-jira-datasource",
-      "version": "1.1.0"
+      "version": "1.11.4"
     },
     {
       "name": "grafana-mongodb-datasource",
-      "version": "1.3.0"
+      "version": "1.22.8"
     },
     {
       "name": "grafana-newrelic-datasource",
-      "version": "2.2.7"
+      "version": "4.6.8"
     },
     {
       "name": "grafana-opensearch-datasource",
-      "version": "2.6.1"
+      "version": "2.22.3"
     },
     {
       "name": "grafana-oracle-datasource",
-      "version": "2.0.9"
+      "version": "2.10.4"
     },
     {
       "name": "grafana-redshift-datasource",
-      "version": "1.7.0"
+      "version": "1.20.0"
     },
     {
       "name": "grafana-salesforce-datasource",
-      "version": "1.0.7"
+      "version": "1.7.8"
     },
     {
       "name": "grafana-saphana-datasource",
-      "version": "1.0.3"
+      "version": "1.7.5"
     },
     {
       "name": "grafana-servicenow-datasource",
-      "version": "2.3.2"
+      "version": "2.12.14"
     },
     {
       "name": "grafana-snowflake-datasource",
-      "version": "1.3.0"
+      "version": "1.12.4"
     },
     {
       "name": "grafana-splunk-datasource",
-      "version": "3.0.2"
+      "version": "5.4.1"
     },
     {
       "name": "grafana-splunk-monitoring-datasource",
-      "version": "1.0.7"
+      "version": "1.7.10"
     },
     {
       "name": "grafana-timestream-datasource",
-      "version": "2.6.1"
+      "version": "2.9.13"
     },
     {
       "name": "grafana-wavefront-datasource",
-      "version": "1.1.1"
+      "version": "2.5.8"
     },
     {
       "name": "grafana-x-ray-datasource",
-      "version": "2.6.1"
+      "version": "2.13.1"
     },
     {
       "name": "marcusolsson-gantt-panel",
@@ -143,11 +143,11 @@
     },
     {
       "name": "moogsoft-aiops-app",
-      "version": "8.0.2"
+      "version": "9.0.0"
     },
     {
       "name": "netsage-sankey-panel",
-      "version": "1.0.6"
+      "version": "1.1.3"
     },
     {
       "name": "operato-windrose-panel",
@@ -159,11 +159,39 @@
     },
     {
       "name": "redis-datasource",
-      "version": "2.1.1"
+      "version": "2.2.0"
     },
     {
       "name": "simpod-json-datasource",
-      "version": "0.5.0"
+      "version": "0.6.6"
+    },
+    {
+      "name": "volkovlabs-echarts-panel",
+      "version": "6.5.0"
+    },
+    {
+      "name": "volkovlabs-form-panel",
+      "version": "5.0.0"
+    },
+    {
+      "name": "volkovlabs-grapi-datasource",
+      "version": "3.4.0"
+    },
+    {
+      "name": "volkovlabs-image-panel",
+      "version": "6.2.0"
+    },
+    {
+      "name": "volkovlabs-rss-datasource",
+      "version": "4.3.0"
+    },
+    {
+      "name": "volkovlabs-table-panel",
+      "version": "2.0.0"
+    },
+    {
+      "name": "volkovlabs-variable-panel",
+      "version": "3.6.0"
     }
   ]
 }
