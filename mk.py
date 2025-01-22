@@ -174,7 +174,7 @@ class PluginList:
                 data = Munch.fromJSON(f.read())
             if "plugins" in data:
                 for item in data["plugins"]:
-                    self.items.append(Plugin(slug=item["name"], version=item["version"]))
+                    self.items.append(Plugin(slug=item["slug"], version=item["version"]))
             else:
                 raise NotImplementedError("Manifest file format not supported")
 
@@ -196,7 +196,7 @@ class PluginList:
         else:
             raise KeyError(
                 f"Plugin not found or incomplete information: "
-                f"name={slug}, version={version}, prefix={prefix}"
+                f"slug={slug}, version={version}, prefix={prefix}"
             )
         return self
 
@@ -204,7 +204,7 @@ class PluginList:
         data = {
             "comment": "Plugins for Amazon Managed Grafana (AMG)",
             "plugins": [
-                {"name": plugin.slug, "version": plugin.version} for plugin in self.items
+                {"slug": plugin.slug, "version": plugin.version} for plugin in self.items
             ],
         }
         return json.dumps(data, indent=2)

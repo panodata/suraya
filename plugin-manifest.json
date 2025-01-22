@@ -2,195 +2,195 @@
   "comment": "Plugins for Amazon Managed Grafana (AMG)",
   "plugins": [
     {
-      "name": "ae3e-plotly-panel",
+      "slug": "ae3e-plotly-panel",
       "version": "0.5.0"
     },
     {
-      "name": "alexanderzobnin-zabbix-app",
+      "slug": "alexanderzobnin-zabbix-app",
       "version": "4.6.1"
     },
     {
-      "name": "dlopes7-appdynamics-datasource",
+      "slug": "dlopes7-appdynamics-datasource",
       "version": "3.10.4"
     },
     {
-      "name": "grafana-athena-datasource",
+      "slug": "grafana-athena-datasource",
       "version": "3.0.0"
     },
     {
-      "name": "grafana-bigquery-datasource",
+      "slug": "grafana-bigquery-datasource",
       "version": "2.0.1"
     },
     {
-      "name": "grafana-clickhouse-datasource",
+      "slug": "grafana-clickhouse-datasource",
       "version": "4.5.1"
     },
     {
-      "name": "grafana-clock-panel",
+      "slug": "grafana-clock-panel",
       "version": "2.1.8"
     },
     {
-      "name": "grafana-cloudflare-datasource",
+      "slug": "grafana-cloudflare-datasource",
       "version": "0.1.2-preview"
     },
     {
-      "name": "grafana-databricks-datasource",
+      "slug": "grafana-databricks-datasource",
       "version": "1.10.4"
     },
     {
-      "name": "grafana-datadog-datasource",
+      "slug": "grafana-datadog-datasource",
       "version": "3.12.4"
     },
     {
-      "name": "grafana-dynatrace-datasource",
+      "slug": "grafana-dynatrace-datasource",
       "version": "3.21.4"
     },
     {
-      "name": "grafana-github-datasource",
+      "slug": "grafana-github-datasource",
       "version": "2.0.1"
     },
     {
-      "name": "grafana-gitlab-datasource",
+      "slug": "grafana-gitlab-datasource",
       "version": "2.3.11"
     },
     {
-      "name": "grafana-googlesheets-datasource",
+      "slug": "grafana-googlesheets-datasource",
       "version": "2.0.1"
     },
     {
-      "name": "grafana-honeycomb-datasource",
+      "slug": "grafana-honeycomb-datasource",
       "version": "2.7.7"
     },
     {
-      "name": "grafana-iot-sitewise-datasource",
+      "slug": "grafana-iot-sitewise-datasource",
       "version": "1.25.2"
     },
     {
-      "name": "grafana-iot-twinmaker-app",
+      "slug": "grafana-iot-twinmaker-app",
       "version": "2.0.0"
     },
     {
-      "name": "grafana-jira-datasource",
+      "slug": "grafana-jira-datasource",
       "version": "1.11.4"
     },
     {
-      "name": "grafana-mongodb-datasource",
+      "slug": "grafana-mongodb-datasource",
       "version": "1.22.8"
     },
     {
-      "name": "grafana-newrelic-datasource",
+      "slug": "grafana-newrelic-datasource",
       "version": "4.6.8"
     },
     {
-      "name": "grafana-opensearch-datasource",
+      "slug": "grafana-opensearch-datasource",
       "version": "2.22.3"
     },
     {
-      "name": "grafana-oracle-datasource",
+      "slug": "grafana-oracle-datasource",
       "version": "2.10.4"
     },
     {
-      "name": "grafana-redshift-datasource",
+      "slug": "grafana-redshift-datasource",
       "version": "1.20.0"
     },
     {
-      "name": "grafana-salesforce-datasource",
+      "slug": "grafana-salesforce-datasource",
       "version": "1.7.8"
     },
     {
-      "name": "grafana-saphana-datasource",
+      "slug": "grafana-saphana-datasource",
       "version": "1.7.5"
     },
     {
-      "name": "grafana-servicenow-datasource",
+      "slug": "grafana-servicenow-datasource",
       "version": "2.12.14"
     },
     {
-      "name": "grafana-snowflake-datasource",
+      "slug": "grafana-snowflake-datasource",
       "version": "1.12.4"
     },
     {
-      "name": "grafana-splunk-datasource",
+      "slug": "grafana-splunk-datasource",
       "version": "5.4.1"
     },
     {
-      "name": "grafana-splunk-monitoring-datasource",
+      "slug": "grafana-splunk-monitoring-datasource",
       "version": "1.7.10"
     },
     {
-      "name": "grafana-timestream-datasource",
+      "slug": "grafana-timestream-datasource",
       "version": "2.9.13"
     },
     {
-      "name": "grafana-wavefront-datasource",
+      "slug": "grafana-wavefront-datasource",
       "version": "2.5.8"
     },
     {
-      "name": "grafana-x-ray-datasource",
+      "slug": "grafana-x-ray-datasource",
       "version": "2.13.1"
     },
     {
-      "name": "marcusolsson-gantt-panel",
+      "slug": "marcusolsson-gantt-panel",
       "version": "0.8.1"
     },
     {
-      "name": "marcusolsson-hourly-heatmap-panel",
+      "slug": "marcusolsson-hourly-heatmap-panel",
       "version": "2.0.1"
     },
     {
-      "name": "michaeldmoore-scatter-panel",
+      "slug": "michaeldmoore-scatter-panel",
       "version": "1.2.0"
     },
     {
-      "name": "moogsoft-aiops-app",
+      "slug": "moogsoft-aiops-app",
       "version": "9.0.0"
     },
     {
-      "name": "netsage-sankey-panel",
+      "slug": "netsage-sankey-panel",
       "version": "1.1.3"
     },
     {
-      "name": "operato-windrose-panel",
+      "slug": "operato-windrose-panel",
       "version": "1.2.0"
     },
     {
-      "name": "pixie-pixie-datasource",
+      "slug": "pixie-pixie-datasource",
       "version": "0.0.9"
     },
     {
-      "name": "redis-datasource",
+      "slug": "redis-datasource",
       "version": "2.2.0"
     },
     {
-      "name": "simpod-json-datasource",
+      "slug": "simpod-json-datasource",
       "version": "0.6.6"
     },
     {
-      "name": "volkovlabs-echarts-panel",
+      "slug": "volkovlabs-echarts-panel",
       "version": "6.5.0"
     },
     {
-      "name": "volkovlabs-form-panel",
+      "slug": "volkovlabs-form-panel",
       "version": "5.0.0"
     },
     {
-      "name": "volkovlabs-grapi-datasource",
+      "slug": "volkovlabs-grapi-datasource",
       "version": "3.4.0"
     },
     {
-      "name": "volkovlabs-image-panel",
+      "slug": "volkovlabs-image-panel",
       "version": "6.2.0"
     },
     {
-      "name": "volkovlabs-rss-datasource",
+      "slug": "volkovlabs-rss-datasource",
       "version": "4.3.0"
     },
     {
-      "name": "volkovlabs-table-panel",
+      "slug": "volkovlabs-table-panel",
       "version": "2.0.0"
     },
     {
-      "name": "volkovlabs-variable-panel",
+      "slug": "volkovlabs-variable-panel",
       "version": "3.6.0"
     }
   ]
