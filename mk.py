@@ -216,6 +216,33 @@ def plugin_urls(path: Path):
 
 
 @cli.command()
+@click.argument("path", type=click.Path(exists=True, path_type=Path))
+@click.pass_context
+def plugins_install(ctx, path: Path):
+    """
+    Install list of plugins using Grafana CLI.
+    """
+    logger.info(f"Using download BOM path: {path}")
+
+    plugins = get_plugins_standard(path)
+
+    for plugin in plugins.items:
+        ctx.invoke(plugin_install, slug=plugin.slug, version=plugin.version)
+
+
+@cli.command()
+@click.argument("slug", type=str, required=True)
+@click.argument("version", type=str, required=False)
+def plugin_install(slug: str, version: str):
+    """
+    Install plugin using Grafana CLI.
+    """
+    logger.info(f"Installing plugin: {slug}/{version}")
+    command = f"grafana cli plugins install {slug} {version}"
+    subprocess.check_call(shlex.split(command))
+
+
+@cli.command()
 @click.argument("image", type=str, default=OCI_NAME_DEFAULT)
 def build(image: str):
     """
