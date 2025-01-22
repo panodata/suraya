@@ -32,7 +32,7 @@ ENV \
 
 # Install prerequisites.
 RUN apt-get update
-RUN apt-get --yes install --no-install-recommends --no-install-suggests git nano p7zip-full unzip wget
+RUN apt-get --yes install --no-install-recommends --no-install-suggests p7zip-full unzip
 
 # Install `uv` package manager.
 # https://docs.astral.sh/uv/guides/integration/docker/#installing-uv
@@ -51,6 +51,7 @@ ARG PLUGIN_URLS_FILE=${SCRATCH_DIR}/plugin-urls.txt
 
 # Provide repository sources.
 COPY . "${SOURCE_DIR}"
+WORKDIR "${SOURCE_DIR}"
 
 # Install Grafana plugins.
 RUN echo "Installing plugins"
@@ -65,10 +66,7 @@ RUN \
     #&& rm -rf ${PLUGINS_DOWNLOAD_DIR} && exit 1 \
     #
     # Download plugins.
-    && uv run /src/mk.py plugin-urls "${PLUGIN_MANIFEST_FILE}" > "${PLUGIN_URLS_FILE}" \
-    && echo "Downloading plugins" \
-    && wget --input-file="${PLUGIN_URLS_FILE}" --directory-prefix="${PLUGINS_DOWNLOAD_DIR}" \
-        --content-disposition --no-clobber --quiet --show-progress --progress=bar:force:noscroll \
+    && uv run mk.py plugins-download "${PLUGIN_MANIFEST_FILE}" "${PLUGINS_DOWNLOAD_DIR}" \
     && echo "Plugins downloaded successfully" \
     && ls -alF ${PLUGINS_DOWNLOAD_DIR}/*.zip \
     #

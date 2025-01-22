@@ -16,6 +16,7 @@ uv run mk.py --version nightly
 #     "click<9",
 #     "hishel<0.2",
 #     "munch<5",
+#     "pypdl",
 # ]
 # ///
 import logging
@@ -24,13 +25,16 @@ import shlex
 import subprocess
 import sys
 import typing as t
+import urllib.parse
 from pathlib import Path
 from textwrap import dedent
 
 import attrs
 import click
 import hishel
+import httpx
 from munch import Munch
+from pypdl import pypdl
 
 log_format = "%(asctime)-15s [%(name)-16s] %(levelname)-8s: %(message)s"
 logging.basicConfig(format=log_format, level=logging.INFO, stream=sys.stderr)
@@ -141,6 +145,7 @@ class PluginList:
     @property
     def package_urls(self) -> t.List[str]:
         urls = []
+        # TODO: Limit number by `[:3]` here.
         for item in self.items:
             if item.slug and item.version:
                 url = self.tpl.format(
@@ -193,6 +198,15 @@ class PluginList:
         return self
 
 
+def get_plugins_standard(path: Path) -> PluginList:
+    """
+    Get standard set of plugins, mostly AMG plus Volkov Labs.
+    """
+    plugins = PluginList()
+    plugins.add_manifest(path).add_package(prefix="volkovlabs-")
+    return plugins
+
+
 @click.group()
 def cli():
     """
@@ -208,11 +222,69 @@ def plugin_urls(path: Path):
     Convert plugin manifests to list of URLs.
     """
     logger.info(f"Using manifest path: {path}")
-
-    plugins = PluginList()
-    plugins.add_manifest(path).add_package(prefix="volkovlabs-")
-
+    plugins = get_plugins_standard(path)
     print("\n".join(plugins.package_urls), file=sys.stdout)
+
+
+@cli.command()
+@click.argument("manifest", type=click.Path(exists=True, path_type=Path))
+@click.argument("target", type=click.Path(exists=True, path_type=Path))
+def plugins_download(manifest: Path, target: Path):
+    """
+    Download plugins by list of URLs.
+    """
+    logger.info(f"BOM manifest path: {manifest}")
+    plugins = get_plugins_standard(manifest)
+    acquire(plugins.package_urls, target)
+
+
+def acquire(urls: t.List[str], target: Path):
+    """
+    Download and extract list of plugins from a list of URLs into a target folder.
+    """
+
+    def get_filename(url: str):
+        """
+        Only because pypdl does not respect the *redirected* download filename.
+        """
+        response = http.get(url)
+        try:
+            response.raise_for_status()
+        except httpx.HTTPStatusError as ex:
+            if not str(ex).startswith("Redirect response"):
+                logger.error(f"Request failed: {ex}")
+                # TODO: raise or continue?
+                raise
+        return Path(urllib.parse.urlsplit(http.get(url).headers["location"]).path).name
+
+    # Build task list for pypdl downloader.
+    tasks = []
+    for url in urls:
+        filename = get_filename(url)
+        task = {"url": url, "file_path": str(target / filename)}
+        tasks.append(task)
+
+    # Invoke pypdl downloader.
+    dl = pypdl.Pypdl(max_concurrent=3, allow_reuse=True)
+    results = dl.start(
+        tasks=tasks,
+        multisegment=False,
+        overwrite=False,
+        display=True,
+        block=True,
+        retries=3,
+        clear_terminal=False,
+    )
+
+    # Display download results.
+    for result in results:
+        if isinstance(result, tuple):
+            url, result = result
+            logger.info(f"Downloaded {url}")
+        logger.info(f"Download succeeded: {result.path}")
+
+    dl.stop()
+    dl.shutdown()
 
 
 @cli.command()
@@ -223,9 +295,7 @@ def plugins_install(ctx, path: Path):
     Install list of plugins using Grafana CLI.
     """
     logger.info(f"Using download BOM path: {path}")
-
     plugins = get_plugins_standard(path)
-
     for plugin in plugins.items:
         ctx.invoke(plugin_install, slug=plugin.slug, version=plugin.version)
 
