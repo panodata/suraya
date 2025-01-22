@@ -2,7 +2,7 @@
 # ruff: noqa: S603,S607
 """
 ## About
-Build Grafana Nuraya.
+Build Grafana Suraya.
 
 ## Synopsis
 ```shell
@@ -49,7 +49,7 @@ logger = logging.getLogger(__name__)
 storage = hishel.FileStorage(ttl=3600)
 http = hishel.CacheClient(storage=storage)
 
-OCI_NAME_DEFAULT = "grafana-nuraya:dev"
+OCI_NAME_DEFAULT = "grafana-suraya:dev"
 
 
 @attrs.define()
@@ -222,9 +222,9 @@ def get_plugins_standard(path: Path) -> PluginList:
 @click.group()
 def cli():
     """
-    Grafana Nuraya Builder.
+    Grafana Suraya Builder.
     """
-    logger.info("Starting Grafana Nuraya MK")
+    logger.info("Starting Grafana Suraya MK")
 
 
 @cli.command()
@@ -357,7 +357,7 @@ def run(image: str, admin_password: str):
     Run Grafana using OCI image.
     """
     command = dedent(f"""
-    docker run --rm -it --name=grafana-nuraya \
+    docker run --rm -it --name=grafana-suraya \
     --publish=3000:3000 \
     --env='GF_SECURITY_ADMIN_PASSWORD={admin_password}' \
     {image}

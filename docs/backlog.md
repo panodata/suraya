@@ -1,7 +1,6 @@
 # Backlog
 
 ## Iteration +1
-- Naming things: `s/Nuraya/Suraya/`?
 - Composition/Infra: Provide Docker Compose file 
 - Composition/HTTP: Grafana vs. marimo vs. Jupyter vs. API: `/g` vs. `/m` vs. `/j` vs. `/a`
 - Composition/Persistence: `grafana.db`
@@ -48,3 +47,4 @@
 - Naming things: Manifest `s/name/slug/`?
 - OCI: Seed with README.md, README.html
 - Naming things: Nuraya, Suraya, Naranja, Naraja
+- Naming things: `s/Nuraya/Suraya/`?

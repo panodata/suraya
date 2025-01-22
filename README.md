@@ -1,8 +1,8 @@
-# Grafana Nuraya
+# Suraya
 
 _A blend of Grafana and marimo, with flavours of AMG and PMM._
 
-Grafana Nuraya is a community distribution of Grafana, with batteries
+Grafana Suraya is a community distribution of Grafana, with batteries
 included, similarly like AWS and Percona are doing it.
 
 Pairing [Grafana] with reactive notebooks using [Jupyter] and [marimo]
@@ -17,7 +17,7 @@ visualization for your operational metrics, logs, and traces, as a fully
 managed service developed in collaboration with Grafana Labs and Amazon
 Web Services (AWS). It includes 40+ additional best-of-breed plugins from
 the Grafana Marketplace.
-On top of this curated set of baseline plugins, Nuraya additionally includes
+On top of this curated set of baseline plugins, Suraya additionally includes
 all 7 plugins of the [Volkov Labs Business Suite for Grafana].
 
 **[Grafana]**, traditionally like »Dashboard anything. Observe everything.«,
@@ -51,12 +51,12 @@ different categories. Marimo provides the gateway to all of them.
 
 ## Usage
 
-Start Grafana Nuraya with admin password `admin`.
+Start Grafana Suraya with admin password `admin`.
 ```shell
 docker run --rm -it \
   --publish=3000:3000 \
   --env='GF_SECURITY_ADMIN_PASSWORD=admin' \
-  ghcr.io/nurayadb/grafana-nuraya:latest
+  ghcr.io/daq-tools/grafana-suraya:latest
 ```
 
 **Note:** This OCI image is not publicly available yet. However, it is easy
@@ -74,23 +74,23 @@ documentation about the [development sandbox][sandbox].
   Short release cycles, and a friendly community with a happy-to-merge
   attitude, in order to ship early and often.
 
-- **Releases:** Grafana Nuraya is an OCI-based distribution, based on stable
+- **Releases:** Grafana Suraya is an OCI-based distribution, based on stable
   releases of Grafana OSS, and its nightly variants.
 
 ## What's inside
 
 ```shell
-alias nuraya='docker run --rm -it --entrypoint= ghcr.io/nurayadb/grafana-nuraya:latest'
+alias suraya='docker run --rm -it --entrypoint= ghcr.io/daq-tools/grafana-suraya:latest'
 ```
 
 Display Grafana version.
 ```shell
-nuraya grafana --version
+suraya grafana --version
 ```
 
 Display list of installed plugins.
 ```shell
-nuraya gf-plugins-list
+suraya gf-plugins-list
 ```
 
 ```text
@@ -146,7 +146,7 @@ volkovlabs-variable-panel @ 3.6.0
 
 Display number of installed plugins.
 ```shell
-nuraya gf-plugins-count
+suraya gf-plugins-count
 ```
 ```
 48
@@ -167,5 +167,5 @@ nuraya gf-plugins-count
 [marimo-small]: https://pbs.twimg.com/media/Gd_xn-iWgAAHFqY?format=jpg&name=small
 [Percona Monitoring and Management]: https://www.percona.com/software/database-tools/percona-monitoring-and-management
 [PyViz]: https://pyviz.org/
-[sandbox]: https://github.com/nurayadb/grafana-nuraya/blob/main/notebooks/docs/sandbox.md
+[sandbox]: https://github.com/daq-tools/grafana-suraya/blob/main/notebooks/docs/sandbox.md
 [Volkov Labs Business Suite for Grafana]: https://volkovlabs.io/

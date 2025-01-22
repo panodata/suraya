@@ -1,4 +1,4 @@
-# Build definition for Grafana Nuraya, a clone of AMG.
+# Build definition for Grafana Suraya, a clone of AMG.
 #
 # - https://grafana.com/docs/grafana/latest/setup-grafana/installation/docker/
 # - https://github.com/grafana/grafana/blob/main/Dockerfile
@@ -127,4 +127,4 @@ RUN gf-plugins-count
 # ENTRYPOINT [ "" ]
 
 # An example full DWIM command-line incantation using `--user=root --entrypoint=`.
-# docker run --rm -it --user=root --entrypoint= grafana-nuraya:dev bash
+# docker run --rm -it --user=root --entrypoint= grafana-suraya:dev bash
