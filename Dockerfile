@@ -7,19 +7,12 @@
 # For more verbose output, use:
 # export BUILDKIT_PROGRESS=plain
 
-# Define Grafana version.
+# Define Grafana and Python versions.
 ARG GRAFANA_VERSION="11.4.0"
-
-# Derive from Grafana OSS.
-FROM grafana/grafana-oss:${GRAFANA_VERSION}-ubuntu
-
-# Switch from user `grafana` to `root`,
-# in order to reconfigure the image.
-USER root
-
-WORKDIR /tmp/grafana
-
 ARG PYTHON_VERSION="3.13"
+
+FROM python:${PYTHON_VERSION}-slim-bookworm AS plugins
+
 ARG UV_VERSION="latest"
 
 ENV \
@@ -49,28 +42,23 @@ ARG SOURCE_DIR=/src
 ARG CACHE_DIR=/root/.cache
 ARG SCRATCH_DIR=/tmp
 ARG PLUGINS_DOWNLOAD_DIR=${CACHE_DIR}/plugins
+ARG PLUGINS_INSTALL_DIR=/opt/grafana-plugins
 
 ARG PLUGIN_MANIFEST_FILE=${SOURCE_DIR}/plugin-manifest.json
 ARG PLUGIN_URLS_FILE=${SCRATCH_DIR}/plugin-urls.txt
 ARG JQ_BIN_FILE=/usr/local/bin/jq
 
-# Install optional software.
-RUN \
-    true \
-    && wget --quiet --output-document="${JQ_BIN_FILE}" "https://github.com/jqlang/jq/releases/download/jq-1.7.1/jq-linux-amd64" \
-    && chmod +x "${JQ_BIN_FILE}"
-
 # Provide repository sources.
 COPY . "${SOURCE_DIR}"
 
-# Install Grafana plugins
-RUN echo "Grafana Nuraya: Installing plugins"
+# Install Grafana plugins.
+RUN echo "Installing plugins"
 RUN \
     --mount=type=cache,id=cache,target=${CACHE_DIR} \
     --mount=type=tmpfs,id=scratch,target=${SCRATCH_DIR} \
     true \
     && mkdir -p "${PLUGINS_DOWNLOAD_DIR}" \
-    && mkdir -p "${GF_PATHS_PLUGINS}" \
+    && mkdir -p "${PLUGINS_INSTALL_DIR}" \
     #
     # Reset download directories.
     #&& rm -rf ${PLUGINS_DOWNLOAD_DIR} && exit 1 \
@@ -80,23 +68,39 @@ RUN \
     && echo "Downloading plugins" \
     && wget --input-file="${PLUGIN_URLS_FILE}" --directory-prefix="${PLUGINS_DOWNLOAD_DIR}" \
         --content-disposition --no-clobber --quiet --show-progress --progress=bar:force:noscroll \
-    && echo "Plugins downloaded successfully:" \
+    && echo "Plugins downloaded successfully" \
     && ls -alF ${PLUGINS_DOWNLOAD_DIR}/*.zip \
     #
-    # Install plugins.
     && echo "Extracting plugins" \
-    #&& zip ${PLUGINS_DOWNLOAD_DIR}/*.zip -d "${GF_PATHS_PLUGINS}" \
-    && for plugin in ${PLUGINS_DOWNLOAD_DIR}/*.zip; do 7z x ${plugin} -o"${GF_PATHS_PLUGINS}/" | grep Path; done \
-    && chown -R grafana:root "${GF_PATHS_PLUGINS}"
+    #&& zip ${PLUGINS_DOWNLOAD_DIR}/*.zip -d "${PLUGINS_INSTALL_DIR}" \
+    && for plugin in ${PLUGINS_DOWNLOAD_DIR}/*.zip; do 7z x ${plugin} -o"${PLUGINS_INSTALL_DIR}/" | grep "Path"; done
 
-RUN echo "Plugins installed successfully:"
-RUN grafana cli plugins ls
 
-# Restore working directory.
-WORKDIR ${GF_PATHS_HOME}
+# Derive from Grafana OSS.
+FROM grafana/grafana-oss:${GRAFANA_VERSION}-ubuntu
 
-# Restore original user name, effectively locking the image again.
+# Switch from user `grafana` to `root`,
+# in order to permit reconfiguring the image.
+USER root
+
+RUN echo "Installing plugins"
+COPY --from=plugins /opt/grafana-plugins "${GF_PATHS_PLUGINS}"
+RUN \
+    true \
+    && chown -R grafana "${GF_PATHS_PLUGINS}" \
+    #
+    && echo "Plugins installed successfully" \
+    && grafana cli plugins ls \
+    #
+    && echo "Enhancing system settings" \
+    && cp /root/.bashrc /root/.profile /home/grafana/ \
+    && chown -R grafana /home/grafana
+
+# Switch back to user `grafana`, effectively locking down the image again.
 USER grafana
 
 # Optionally, unset the `/run.sh` entrypoint.
 # ENTRYPOINT [ "" ]
+
+# Alternatively, use:
+# docker run --rm -it --user=root --entrypoint=/bin/bash grafana-nuraya:dev
