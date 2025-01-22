@@ -8,7 +8,7 @@ Build OCI image `grafana-suraya:dev`.
 ```shell
 git clone https://github.com/daq-tools/suraya.git
 cd grafana-suraya
-uv run mk.py build
+uv run -m suraya.grafana.mk build
 ```
 
 Display list of installed plugins.
@@ -20,7 +20,7 @@ docker run --rm -it --entrypoint= grafana-suraya:dev gf-plugins-list
 
 Start Grafana with admin password `admin`.
 ```shell
-uv run mk.py run
+uv run -m suraya.grafana.mk run
 ```
 
 ## Explore

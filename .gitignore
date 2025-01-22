@@ -1,2 +1,6 @@
 *.idea
+*.egg-info
+*.lock
 *.log
+*.pyc
+__pycache__

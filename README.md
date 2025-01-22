@@ -167,5 +167,5 @@ suraya gf-plugins-count
 [marimo-small]: https://pbs.twimg.com/media/Gd_xn-iWgAAHFqY?format=jpg&name=small
 [Percona Monitoring and Management]: https://www.percona.com/software/database-tools/percona-monitoring-and-management
 [PyViz]: https://pyviz.org/
-[sandbox]: https://github.com/daq-tools/grafana-suraya/blob/main/notebooks/docs/sandbox.md
+[sandbox]: https://github.com/daq-tools/suraya/blob/main/notebooks/docs/sandbox.md
 [Volkov Labs Business Suite for Grafana]: https://volkovlabs.io/

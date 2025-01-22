@@ -48,3 +48,4 @@
 - OCI: Seed with README.md, README.html
 - Naming things: Nuraya, Suraya, Naranja, Naraja
 - Naming things: `s/Nuraya/Suraya/`?
+- Refactoring: Make it a real package called `suraya`

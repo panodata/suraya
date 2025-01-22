@@ -1,27 +1,11 @@
 #!/usr/bin/env python
+"""
+Grafana Suraya MK.
+"""
+
 # ruff: noqa: S603,S607
-"""
-## About
-Build Grafana Suraya.
-
-## Synopsis
-```shell
-uv run mk.py --version nightly
-```
-"""
-
+import importlib.resources
 import json
-
-# /// script
-# requires-python = ">=3.10"
-# dependencies = [
-#     "attrs",
-#     "click<9",
-#     "hishel<0.2",
-#     "munch<5",
-#     "pypdl",
-# ]
-# ///
 import logging
 import os
 import shlex
@@ -346,7 +330,20 @@ def build(image: str):
     os.environ["BUILDKIT_PROGRESS"] = "plain"
     os.environ["DOCKER_BUILDKIT"] = "1"
 
-    subprocess.check_call(["docker", "build", "-t", image, "."])
+    folder = importlib.resources.files(__package__)
+    subprocess.check_call(
+        [
+            "docker",
+            "build",
+            "--file",
+            folder / "Dockerfile",
+            "--build-context",
+            f"module={folder}",
+            "--tag",
+            image,
+            ".",
+        ]
+    )
 
 
 @cli.command()
