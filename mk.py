@@ -139,9 +139,11 @@ class PluginList:
         if path.suffix == ".json":
             with open(path) as f:
                 data = Munch.fromJSON(f.read())
-            if "versions" in data:
-                for item in data["versions"]:
+            if "plugins" in data:
+                for item in data["plugins"]:
                     self.items.append(Plugin(slug=item["name"], version=item["version"]))
+            else:
+                raise NotImplementedError("Manifest file format not supported")
 
         elif path.suffix == ".toml":
             raise NotImplementedError("Reading plugin manifests from TOML not implemented yet")

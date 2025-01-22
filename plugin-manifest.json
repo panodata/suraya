@@ -1,0 +1,169 @@
+{
+  "comment": "Plugins for Amazon Managed Grafana (AMG)",
+  "plugins": [
+    {
+      "name": "ae3e-plotly-panel",
+      "version": "0.5.0"
+    },
+    {
+      "name": "alexanderzobnin-zabbix-app",
+      "version": "4.2.10"
+    },
+    {
+      "name": "dlopes7-appdynamics-datasource",
+      "version": "2.5.0"
+    },
+    {
+      "name": "grafana-athena-datasource",
+      "version": "2.8.0"
+    },
+    {
+      "name": "grafana-bigquery-datasource",
+      "version": "1.2.3"
+    },
+    {
+      "name": "grafana-clickhouse-datasource",
+      "version": "1.1.2"
+    },
+    {
+      "name": "grafana-clock-panel",
+      "version": "2.1.2"
+    },
+    {
+      "name": "grafana-cloudflare-datasource",
+      "version": "0.2.4"
+    },
+    {
+      "name": "grafana-databricks-datasource",
+      "version": "0.3.0"
+    },
+    {
+      "name": "grafana-datadog-datasource",
+      "version": "2.3.13"
+    },
+    {
+      "name": "grafana-dynatrace-datasource",
+      "version": "3.4.3"
+    },
+    {
+      "name": "grafana-github-datasource",
+      "version": "1.4.0"
+    },
+    {
+      "name": "grafana-gitlab-datasource",
+      "version": "0.1.5"
+    },
+    {
+      "name": "grafana-googlesheets-datasource",
+      "version": "1.1.6"
+    },
+    {
+      "name": "grafana-honeycomb-datasource",
+      "version": "1.1.2"
+    },
+    {
+      "name": "grafana-iot-sitewise-datasource",
+      "version": "1.7.0"
+    },
+    {
+      "name": "grafana-iot-twinmaker-app",
+      "version": "1.6.2"
+    },
+    {
+      "name": "grafana-jira-datasource",
+      "version": "1.1.0"
+    },
+    {
+      "name": "grafana-mongodb-datasource",
+      "version": "1.3.0"
+    },
+    {
+      "name": "grafana-newrelic-datasource",
+      "version": "2.2.7"
+    },
+    {
+      "name": "grafana-opensearch-datasource",
+      "version": "2.6.1"
+    },
+    {
+      "name": "grafana-oracle-datasource",
+      "version": "2.0.9"
+    },
+    {
+      "name": "grafana-redshift-datasource",
+      "version": "1.7.0"
+    },
+    {
+      "name": "grafana-salesforce-datasource",
+      "version": "1.0.7"
+    },
+    {
+      "name": "grafana-saphana-datasource",
+      "version": "1.0.3"
+    },
+    {
+      "name": "grafana-servicenow-datasource",
+      "version": "2.3.2"
+    },
+    {
+      "name": "grafana-snowflake-datasource",
+      "version": "1.3.0"
+    },
+    {
+      "name": "grafana-splunk-datasource",
+      "version": "3.0.2"
+    },
+    {
+      "name": "grafana-splunk-monitoring-datasource",
+      "version": "1.0.7"
+    },
+    {
+      "name": "grafana-timestream-datasource",
+      "version": "2.6.1"
+    },
+    {
+      "name": "grafana-wavefront-datasource",
+      "version": "1.1.1"
+    },
+    {
+      "name": "grafana-x-ray-datasource",
+      "version": "2.6.1"
+    },
+    {
+      "name": "marcusolsson-gantt-panel",
+      "version": "0.8.1"
+    },
+    {
+      "name": "marcusolsson-hourly-heatmap-panel",
+      "version": "2.0.1"
+    },
+    {
+      "name": "michaeldmoore-scatter-panel",
+      "version": "1.2.0"
+    },
+    {
+      "name": "moogsoft-aiops-app",
+      "version": "8.0.2"
+    },
+    {
+      "name": "netsage-sankey-panel",
+      "version": "1.0.6"
+    },
+    {
+      "name": "operato-windrose-panel",
+      "version": "1.2.0"
+    },
+    {
+      "name": "pixie-pixie-datasource",
+      "version": "0.0.9"
+    },
+    {
+      "name": "redis-datasource",
+      "version": "2.1.1"
+    },
+    {
+      "name": "simpod-json-datasource",
+      "version": "0.5.0"
+    }
+  ]
+}
