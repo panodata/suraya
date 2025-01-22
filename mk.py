@@ -19,9 +19,13 @@ uv run mk.py --version nightly
 # ]
 # ///
 import logging
+import os
+import shlex
+import subprocess
 import sys
 import typing as t
 from pathlib import Path
+from textwrap import dedent
 
 import attrs
 import click
@@ -37,6 +41,8 @@ logger = logging.getLogger(__name__)
 # HTTP client, with 1 hour of caching.
 storage = hishel.FileStorage(ttl=3600)
 http = hishel.CacheClient(storage=storage)
+
+OCI_NAME_DEFAULT = "grafana-nuraya:dev"
 
 
 @attrs.define()
@@ -189,6 +195,34 @@ def plugin_urls(path: Path):
     plugins.add_manifest(path).add_package(prefix="volkovlabs-")
 
     print("\n".join(plugins.package_urls), file=sys.stdout)
+
+
+@cli.command()
+@click.argument("image", type=str, default=OCI_NAME_DEFAULT)
+def build(image: str):
+    """
+    Build OCI image.
+    """
+    os.environ["BUILDKIT_PROGRESS"] = "plain"
+    os.environ["DOCKER_BUILDKIT"] = "1"
+
+    subprocess.check_call(["docker", "build", "-t", image, "."])
+
+
+@cli.command()
+@click.argument("image", type=str, default=OCI_NAME_DEFAULT)
+@click.argument("admin-password", type=str, default="admin")
+def run(image: str, admin_password: str):
+    """
+    Run Grafana using OCI image.
+    """
+    command = dedent(f"""
+    docker run --rm -it --name=grafana-nuraya \
+    --publish=3000:3000 \
+    --env='GF_SECURITY_ADMIN_PASSWORD={admin_password}' \
+    {image}
+    """).replace("\n", "")
+    subprocess.check_call(shlex.split(command))
 
 
 if __name__ == "__main__":
