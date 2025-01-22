@@ -82,6 +82,9 @@ FROM grafana/grafana-oss:${GRAFANA_VERSION}-ubuntu
 # in order to permit reconfiguring the image.
 USER root
 
+# Seed README.md into root folder.
+COPY README.md /
+
 # Configure.
 ARG GRAFANA_PLUGINS_LIST=/usr/local/bin/gf-plugins-list
 ARG GRAFANA_PLUGINS_COUNT=/usr/local/bin/gf-plugins-count
