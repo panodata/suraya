@@ -93,7 +93,8 @@ class GrafanaPluginCatalog:
         """
         Get plugin and package information.
         """
-        candidates = ["any", "linux-amd64"]
+        # TODO: Select specific platform based on user choice or parent platform.
+        candidates = ["linux-amd64", "any"]
         for candidate in candidates:
             if candidate in item.packages:
                 return GrafanaPluginInfo(
