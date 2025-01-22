@@ -83,8 +83,10 @@ FROM grafana/grafana-oss:${GRAFANA_VERSION}-ubuntu
 USER root
 
 # Configure.
-ARG GRAFANA_PLUGINS_BIN_FILE=/usr/local/bin/gf-plugins
+ARG GRAFANA_PLUGINS_LIST=/usr/local/bin/gf-plugins-list
+ARG GRAFANA_PLUGINS_COUNT=/usr/local/bin/gf-plugins-count
 
+# Install plugins.
 RUN echo "Installing plugins"
 COPY --from=plugins /opt/grafana-plugins "${GF_PATHS_PLUGINS}"
 RUN \
@@ -92,11 +94,13 @@ RUN \
     && chown -R grafana "${GF_PATHS_PLUGINS}" \
     && echo "Plugins installed successfully"
 
-# Install `gf-plugins` command that will list installed plugins alphabetically.
+# Install utility command that will list installed plugins alphabetically.
 RUN \
     true \
-    && echo "#!/bin/sh\ngrafana cli plugins ls | grep -v 'installed plugins:' | sort" > "${GRAFANA_PLUGINS_BIN_FILE}" \
-    && chmod +x "${GRAFANA_PLUGINS_BIN_FILE}"
+    && echo "#!/bin/sh\ngrafana cli plugins ls | grep -v 'installed plugins:' | sort" > "${GRAFANA_PLUGINS_LIST}" \
+    && echo "#!/bin/sh\n${GRAFANA_PLUGINS_LIST} | wc -l" > "${GRAFANA_PLUGINS_COUNT}" \
+    && chmod +x "${GRAFANA_PLUGINS_LIST}" \
+    && chmod +x "${GRAFANA_PLUGINS_COUNT}"
 
 # Enhance system settings.
 RUN \
@@ -104,11 +108,16 @@ RUN \
     && cp /root/.bashrc /root/.profile /home/grafana/ \
     && chown -R grafana /home/grafana
 
-# Switch back to user `grafana`, effectively locking down the image again.
+# Switch back to user `grafana` and original working directory,
+# effectively locking down the image again.
 USER grafana
+WORKDIR $GF_PATHS_HOME
 
-RUN echo "Installed plugins:"
-RUN gf-plugins
+# Pre-flight checks.
+RUN echo "List of installed plugins:"
+RUN gf-plugins-list
+RUN echo "Number of installed plugins:"
+RUN gf-plugins-count
 
 # Optionally, unset the `/run.sh` entrypoint, in order to easier invoke arbitrary commands.
 # Otherwise, use `--entrypoint=` on the CLI to override it.
