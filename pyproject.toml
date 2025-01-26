@@ -72,7 +72,9 @@ dependencies = [
   "click",
   "hishel<0.2",
   "munch",
+  "pueblo",
   "pypdl",
+  "python-on-whales",
 ]
 optional-dependencies.develop = [
   "pueblo[develop]",

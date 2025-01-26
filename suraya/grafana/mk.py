@@ -21,10 +21,9 @@ import click
 import hishel
 import httpx
 from munch import Munch
+from pueblo import setup_logging
 from pypdl import pypdl
 
-log_format = "%(asctime)-15s [%(name)-16s] %(levelname)-8s: %(message)s"
-logging.basicConfig(format=log_format, level=logging.INFO, stream=sys.stderr)
 
 logger = logging.getLogger(__name__)
 
@@ -363,4 +362,5 @@ def run(image: str, admin_password: str):
 
 
 if __name__ == "__main__":
+    setup_logging()
     cli()

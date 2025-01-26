@@ -51,11 +51,22 @@ different categories. Marimo provides the gateway to all of them.
 
 ## Usage
 
-Start Grafana Suraya with admin password `admin`.
+```shell
+uv pip install suraya
+python -m suraya.system.mk boot
+```
+
+```shell
+open http://localhost:8080/
+```
+
+Credentials are: admin/grafana
+
+Start Grafana Suraya with admin password `grafana`.
 ```shell
 docker run --rm -it \
   --publish=3000:3000 \
-  --env='GF_SECURITY_ADMIN_PASSWORD=admin' \
+  --env='GF_SECURITY_ADMIN_PASSWORD=grafana' \
   ghcr.io/daq-tools/grafana-suraya:latest
 ```
 
