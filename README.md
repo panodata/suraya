@@ -20,6 +20,10 @@ the Grafana Marketplace.
 On top of this curated set of baseline plugins, Suraya additionally includes
 all 7 plugins of the [Volkov Labs Business Suite for Grafana].
 
+**[CrateDB]** is a distributed and scalable SQL database for storing and
+analyzing massive amounts of data in near real-time, even with complex
+queries. It is PostgreSQL-compatible, and based on Lucene.
+
 **[Grafana]**, traditionally like »Dashboard anything. Observe everything.«,
 and still going strong, it makes you query, visualize, alert on, and
 understand your data no matter where it’s stored. With Grafana, you can create,
@@ -168,6 +172,7 @@ suraya gf-plugins-count
 [AMG 2020]: https://aws.amazon.com/blogs/aws/announcing-amazon-managed-grafana-service-in-preview/
 [AMG 2021a]: https://aws.amazon.com/blogs/mt/amazon-managed-service-for-grafana-amg-preview-updated-with-new-capabilities/
 [AMG 2021b]: https://aws.amazon.com/blogs/aws/amazon-managed-grafana-is-now-generally-available-with-many-new-features/
+[CrateDB]: https://en.wikipedia.org/wiki/CrateDB
 [Grafana]: https://en.wikipedia.org/wiki/Grafana
 [Grafana Image Renderer]: https://grafana.com/docs/grafana/latest/setup-grafana/image-rendering/
 [grafana-large]: https://upload.wikimedia.org/wikipedia/commons/b/b3/Grafana_screenshot.png

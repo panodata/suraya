@@ -31,6 +31,12 @@ services:
         condition: on-failure
     restart: unless-stopped
 
+  cratedb-cockpit:
+    image: surister/cratedbaltadmin:0.3.3
+    ports:
+      - "4201:80"
+    restart: unless-stopped
+
   grafana:
     image: grafana-suraya:dev
     volumes:
