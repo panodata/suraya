@@ -1,9 +1,12 @@
 # Backlog
 
 ## Iteration +1
-- Composition/Infra: Provide Docker Compose file 
-- Composition/HTTP: Grafana vs. marimo vs. Jupyter vs. API: `/g` vs. `/m` vs. `/j` vs. `/a`
-- Composition/Persistence: `grafana.db`
+- Composition/Infra: Provide Docker Compose file
+  - https://github.com/docker/awesome-compose
+- Composition/HTTP: Grafana vs. Marimo vs. Jupyter vs. API: `/g` vs. `/m` vs. `/j` vs. `/a`
+- s/8080/anything/
+- Theme: Dark mode by default
+- Composition/Persistence: `grafana.db` and others
 - CI: Add software tests
 - CI: Stage OCI builds to GHCR
 - Release 0.0.0
@@ -33,9 +36,14 @@
 - OCI: Nightly builds
 - Integrate with grafana-image-renderer
 - **Reporting:** [Grafana Image Renderer]
-- JupyterLab
-- Curvenote: https://github.com/curvenote/curvenote
-- Grafana Scenes: https://github.com/grafana/scenes
+- Classroom mode:
+  - Promote collaboration
+  - Prevent overshooting
+  - Have a TTL
+- Demo mode
+  - Wipe server content each night, and/or on a database
+    level after one hour of using it.
+  - Have fresh nightly releases each day.
 
 ## Done
 - OCI: Multi-stage builds

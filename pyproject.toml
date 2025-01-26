@@ -10,7 +10,7 @@ requires = [
 
 [project]
 name = "suraya"
-description = "Suraya - a blend of Grafana and marimo, with flavours of AMG and PMM."
+description = "Suraya - a blend of Grafana and Marimo, with flavours of AMG and PMM."
 readme = "README.md"
 keywords = [
   "amg",

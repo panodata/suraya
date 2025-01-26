@@ -1,16 +1,16 @@
 # Suraya
 
-_A blend of Grafana and marimo, with flavours of AMG and PMM._
+_A blend of Grafana and Marimo, with flavours of AMG and PMM._
 
 Grafana Suraya is a community distribution of Grafana, with batteries
 included, similarly like AWS and Percona are doing it.
 
-Pairing [Grafana] with reactive notebooks using [Jupyter] and [marimo]
+Pairing [Grafana] with reactive notebooks using [Jupyter] and [Marimo]
 technologies optimally connects the Grafana and Python software ecosystems,
 and provides a gateway from one to the other.
 
 [![Grafana Dashboard][grafana-small]][grafana-large]
-[![marimo NYC Rats][marimo-small]][marimo-large]
+[![Marimo NYC Rats][marimo-small]][marimo-large]
 
 **[Amazon Managed Grafana]** (AMG) provides scalable and secure data
 visualization for your operational metrics, logs, and traces, as a fully
@@ -30,9 +30,9 @@ on top of many high-quality database connectors.
 git-friendly, executable as a script, and shareable as an app.
 Marimo notebooks are reproducible, extremely interactive, designed for
 collaboration, and reactive, which means that when running a cell or
-interacting with an UI element, marimo will backtrack and update
+interacting with an UI element, Marimo will backtrack and update
 all dependent cells and UI elements when needed. Contrary to Jupyter
-Notebooks using the JSON format, marimo notebooks are stored
+Notebooks using the JSON format, Marimo notebooks are stored
 as pure Python, executable as a script, and deployable as an app.
 
 **[Percona Monitoring and Management]** (PMM) is an open source database
@@ -173,7 +173,7 @@ suraya gf-plugins-count
 [grafana-large]: https://upload.wikimedia.org/wikipedia/commons/b/b3/Grafana_screenshot.png
 [grafana-small]: https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Grafana_screenshot.png/800px-Grafana_screenshot.png
 [Jupyter]: https://en.wikipedia.org/wiki/Jupyter
-[marimo]: https://marimo.io/
+[Marimo]: https://marimo.io/
 [marimo-large]: https://pbs.twimg.com/media/Gd_xn-iWgAAHFqY?format=jpg&name=large
 [marimo-small]: https://pbs.twimg.com/media/Gd_xn-iWgAAHFqY?format=jpg&name=small
 [Percona Monitoring and Management]: https://www.percona.com/software/database-tools/percona-monitoring-and-management
