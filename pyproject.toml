@@ -79,6 +79,18 @@ dependencies = [
 optional-dependencies.develop = [
   "pueblo[develop]",
 ]
+optional-dependencies.web = [
+   "duckdb",
+   "fastapi",
+   "jinja2",
+   "marimo",
+   "pandas==2.2.3",
+   "starlette",
+   "requests",
+   "pydantic",
+   "sqlalchemy-cratedb",
+   "vega-datasets==0.9.0",
+]
 optional-dependencies.test = [
   "pueblo[testing]",
 ]

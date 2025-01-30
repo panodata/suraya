@@ -50,3 +50,9 @@ services:
       - GF_SECURITY_ADMIN_USER=admin
       - GF_SECURITY_ADMIN_PASSWORD=grafana
     restart: unless-stopped
+
+  marimo:
+    image: marimo-suraya:dev
+    ports:
+      - "4211:4211"
+    restart: unless-stopped
