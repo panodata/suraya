@@ -10,6 +10,10 @@
 - CI: Add software tests
 - CI: Stage OCI builds to GHCR
 - Release 0.0.0
+- Homepage design / layout:
+  - https://gitbutler.com/
+  - https://jcristharif.com/msgspec/
+- Ingest: https://github.com/pingdotgg/uploadthing
 
 ## Iteration +2
 - mk: Reading plugin manifest from TOML
