@@ -2,6 +2,8 @@
 
 _A blend of Grafana and Marimo, with flavours of AMG and PMM._
 
+## About
+
 Grafana Suraya is a community distribution of Grafana, with batteries
 included, similarly like AWS and Percona are doing it.
 
@@ -9,8 +11,7 @@ Pairing [Grafana] with reactive notebooks using [Jupyter] and [Marimo]
 technologies optimally connects the Grafana and Python software ecosystems,
 and provides a gateway from one to the other.
 
-[![Grafana Dashboard][grafana-small]][grafana-large]
-[![Marimo NYC Rats][marimo-small]][marimo-large]
+## Topics
 
 **[Amazon Managed Grafana]** (AMG) provides scalable and secure data
 visualization for your operational metrics, logs, and traces, as a fully
@@ -166,6 +167,11 @@ suraya gf-plugins-count
 ```
 48
 ```
+
+## Screenshots
+
+[![Grafana Dashboard][grafana-small]][grafana-large]
+[![Marimo NYC Rats][marimo-small]][marimo-large]
 
 
 [Amazon Managed Grafana]: https://aws.amazon.com/grafana/
