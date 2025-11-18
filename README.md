@@ -175,8 +175,8 @@ suraya gf-plugins-count
 [CrateDB]: https://en.wikipedia.org/wiki/CrateDB
 [Grafana]: https://en.wikipedia.org/wiki/Grafana
 [Grafana Image Renderer]: https://grafana.com/docs/grafana/latest/setup-grafana/image-rendering/
-[grafana-large]: https://upload.wikimedia.org/wikipedia/commons/b/b3/Grafana_screenshot.png
-[grafana-small]: https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Grafana_screenshot.png/800px-Grafana_screenshot.png
+[grafana-large]: https://grafana.com/media/products/cloud/grafana/grafana-dashboard-english.png
+[grafana-small]: https://grafana.com/media/products/cloud/grafana/grafana-dashboard-english.png?h=400
 [Jupyter]: https://en.wikipedia.org/wiki/Jupyter
 [Marimo]: https://marimo.io/
 [marimo-large]: https://pbs.twimg.com/media/Gd_xn-iWgAAHFqY?format=jpg&name=large
