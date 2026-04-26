@@ -14,20 +14,14 @@ ARG PYTHON_VERSION="3.13"
 
 FROM python:${PYTHON_VERSION}-slim-bookworm AS plugins
 
-ENV \
-    #
-    # Configure operating system.
-    DEBIAN_FRONTEND=noninteractive \
-    TERM=linux \
-    #
-    # Configure `pip` package manager.
-    PIP_ROOT_USER_ACTION=ignore \
-    #
-    # Configure `uv` package manager.
-    UV_COMPILE_BYTECODE=true \
-    UV_LINK_MODE=copy \
-    UV_PYTHON=${PYTHON_VERSION} \
-    UV_SYSTEM_PYTHON=true
+# Configure operating system, and `pip` and `uv` package managers.
+ENV DEBIAN_FRONTEND=noninteractive
+ENV TERM=linux
+ENV PIP_ROOT_USER_ACTION=ignore
+ENV UV_COMPILE_BYTECODE=true
+ENV UV_LINK_MODE=copy
+ENV UV_PYTHON=${PYTHON_VERSION}
+ENV UV_SYSTEM_PYTHON=true
 
 # Install prerequisites.
 RUN apt-get update
