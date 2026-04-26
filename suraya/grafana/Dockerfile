@@ -10,9 +10,9 @@
 
 # Define Grafana and Python versions.
 ARG GRAFANA_VERSION="11.4.0"
-ARG PYTHON_VERSION="3.13"
+ARG PYTHON_VERSION="3.14"
 
-FROM python:${PYTHON_VERSION}-slim-bookworm AS plugins
+FROM docker.io/python:${PYTHON_VERSION}-slim-bookworm AS plugins
 
 # Configure operating system, and `pip` and `uv` package managers.
 ENV DEBIAN_FRONTEND=noninteractive
