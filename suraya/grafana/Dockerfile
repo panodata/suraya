@@ -9,7 +9,7 @@
 # export BUILDKIT_PROGRESS=plain
 
 # Define Grafana and Python versions.
-ARG GRAFANA_VERSION="11.4.0"
+ARG GRAFANA_VERSION="13.0.1"
 ARG PYTHON_VERSION="3.14"
 
 FROM docker.io/python:${PYTHON_VERSION}-slim-bookworm AS plugins
@@ -79,7 +79,7 @@ RUN \
 
 
 # Derive from Grafana OSS.
-FROM grafana/grafana-oss:${GRAFANA_VERSION}-ubuntu
+FROM docker.io/grafana/grafana:${GRAFANA_VERSION}-ubuntu
 
 # Switch from user `grafana` to `root`,
 # in order to permit reconfiguring the image.
