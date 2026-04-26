@@ -7,7 +7,7 @@ A quick walkthrough how to work with the repository in development mode.
 Build OCI image `grafana-suraya:dev`.
 ```shell
 git clone https://github.com/daq-tools/suraya.git
-cd grafana-suraya
+cd suraya
 uv run -m suraya.grafana.mk build
 ```
 
