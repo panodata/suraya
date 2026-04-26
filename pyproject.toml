@@ -84,7 +84,7 @@ optional-dependencies.web = [
    "fastapi",
    "jinja2",
    "marimo",
-   "pandas==2.2.3",
+   "pandas==3.0.2",
    "starlette",
    "requests",
    "pydantic",
