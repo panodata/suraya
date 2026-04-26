@@ -34,10 +34,6 @@
       "version": "0.1.2-preview"
     },
     {
-      "slug": "grafana-databricks-datasource",
-      "version": "1.10.4"
-    },
-    {
       "slug": "grafana-datadog-datasource",
       "version": "3.12.4"
     },

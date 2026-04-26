@@ -118,7 +118,6 @@ grafana-bigquery-datasource @ 2.0.1
 grafana-clickhouse-datasource @ 4.5.1
 grafana-clock-panel @ 2.1.8
 grafana-cloudflare-datasource @ 0.1.2-preview
-grafana-databricks-datasource @ 1.10.4
 grafana-datadog-datasource @ 3.12.4
 grafana-dynatrace-datasource @ 3.21.4
 grafana-github-datasource @ 2.0.1
