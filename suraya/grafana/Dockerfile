@@ -37,12 +37,12 @@ ARG SCRATCH_DIR=/tmp
 ARG PLUGINS_DOWNLOAD_DIR=${CACHE_DIR}/plugins
 ARG PLUGINS_INSTALL_DIR=/opt/grafana-plugins
 
-ARG PLUGIN_MANIFEST_FILE=/plugin-manifest.json
+ARG PLUGIN_MANIFEST_FILE=plugin-manifest.json
 ARG PLUGIN_URLS_FILE=${SCRATCH_DIR}/plugin-urls.txt
 
 # Populate staging area.
 COPY . ${SOURCE_DIR}
-COPY --from=module ${PLUGIN_MANIFEST_FILE} .
+COPY --from=module /${PLUGIN_MANIFEST_FILE} ${SOURCE_DIR}
 
 # Install Python package.
 WORKDIR ${SOURCE_DIR}
