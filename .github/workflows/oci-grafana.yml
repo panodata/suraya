@@ -12,12 +12,12 @@ on:
       - '*'
 
   # Build images on each pull request.
-  # Remark: Disabled to conserve CI resources. Use workflow_dispatch for manual builds.
+  # Remark: Disable to save CI resources. Use workflow_dispatch for manual builds.
   pull_request:
 
   # Produce a nightly image every day at 6 a.m. CEST.
   schedule:
-    - cron: '0 6 * * *'
+    - cron: '0 4 * * *'
 
   # Allow job to be triggered manually.
   workflow_dispatch:
