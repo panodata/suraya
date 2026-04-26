@@ -70,7 +70,7 @@ dynamic = [
 dependencies = [
   "attrs",
   "click",
-  "hishel<0.2",
+  "hishel<1.2",
   "httpx<0.29",
   "munch",
   "pueblo",
