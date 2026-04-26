@@ -41,6 +41,8 @@ ARG PLUGIN_MANIFEST_FILE=plugin-manifest.json
 ARG PLUGIN_URLS_FILE=${SCRATCH_DIR}/plugin-urls.txt
 
 # Populate staging area.
+# Note: requires the caller to pass `--build-context module=<path-to-suraya/grafana>`
+# (or `additional_contexts` in Compose) so this COPY can resolve the manifest.
 COPY . ${SOURCE_DIR}
 COPY --from=module /${PLUGIN_MANIFEST_FILE} ${SOURCE_DIR}
 
@@ -122,6 +124,9 @@ RUN echo "List of installed plugins:"
 RUN gf-plugins-list
 RUN echo "Number of installed plugins:"
 RUN gf-plugins-count
+
+# Copy `selftest.sh` to the image.
+COPY suraya/grafana/selftest.sh /usr/local/bin
 
 # Optionally, unset the `/run.sh` entrypoint, in order to easier invoke arbitrary commands.
 # Otherwise, use `--entrypoint=` on the CLI to override it.
