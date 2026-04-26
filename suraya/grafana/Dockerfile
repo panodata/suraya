@@ -47,11 +47,11 @@ ARG PLUGIN_MANIFEST_FILE=plugin-manifest.json
 ARG PLUGIN_URLS_FILE=${SCRATCH_DIR}/plugin-urls.txt
 
 # Populate staging area.
-WORKDIR ${SOURCE_DIR}
-COPY --from=plugins . .
+COPY . ${SOURCE_DIR}
 COPY --from=module ${PLUGIN_MANIFEST_FILE} .
 
 # Install Python package.
+WORKDIR ${SOURCE_DIR}
 RUN ls -alF
 RUN uv pip install --editable=.
 
