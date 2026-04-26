@@ -13,3 +13,4 @@
   `ERROR: pull access denied, repository does not exist or may require authorization:
   server message: insufficient_scope: authorization failed`
 - Grafana: Updated to v13.0.1
+- Grafana: Updated plugin manifest list
