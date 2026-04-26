@@ -12,6 +12,19 @@
 ARG GRAFANA_VERSION="13.0.1"
 ARG PYTHON_VERSION="3.14"
 
+
+# Build Python package from working tree.
+FROM docker.io/python:alpine AS python-pkg
+
+ARG SOURCE_DIR=/src
+COPY . ${SOURCE_DIR}
+WORKDIR ${SOURCE_DIR}
+
+RUN apk add git
+RUN python -m pip install build
+RUN python -m build
+
+
 FROM docker.io/python:${PYTHON_VERSION}-slim-bookworm AS plugins
 
 # Configure operating system, and `pip` and `uv` package managers.
@@ -40,16 +53,14 @@ ARG PLUGINS_INSTALL_DIR=/opt/grafana-plugins
 ARG PLUGIN_MANIFEST_FILE=plugin-manifest.json
 ARG PLUGIN_URLS_FILE=${SCRATCH_DIR}/plugin-urls.txt
 
-# Populate staging area.
+# Install Python package from working tree.
+COPY --from=python-pkg /src/dist/*.whl /tmp
+RUN uv pip install /tmp/*.whl
+
+# Populate module content to staging area.
 # Note: requires the caller to pass `--build-context module=<path-to-suraya/grafana>`
 # (or `additional_contexts` in Compose) so this COPY can resolve the manifest.
-COPY . ${SOURCE_DIR}
-COPY --from=module /${PLUGIN_MANIFEST_FILE} ${SOURCE_DIR}
-
-# Install Python package.
-WORKDIR ${SOURCE_DIR}
-RUN ls -alF
-RUN uv pip install --editable=.
+COPY --from=module /${PLUGIN_MANIFEST_FILE} .
 
 # Install Grafana plugins.
 RUN echo "Installing plugins"
