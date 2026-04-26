@@ -281,7 +281,6 @@ def acquire(urls: t.List[str], target: Path):
         display=True,
         block=True,
         retries=3,
-        clear_terminal=False,
     )
 
     # Display download results.
