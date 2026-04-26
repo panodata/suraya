@@ -1,0 +1,7 @@
+services:
+  sut:
+    build:
+      context: ../..
+      dockerfile: suraya/grafana/Dockerfile
+    entrypoint: ""
+    command: selftest.sh
