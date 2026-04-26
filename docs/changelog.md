@@ -2,6 +2,8 @@
 
 ## In progress
 
+## v0.0.1, 2026-04-26
+
 - Grafana: Fixed builder `python -m suraya.grafana.mk build`
 - Grafana: Plugin `grafana-databricks-datasource` 404
 - Grafana: Plugin `grafana-snowflake-datasource` 404
