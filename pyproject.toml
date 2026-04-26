@@ -28,7 +28,7 @@ keywords = [
   "pyviz",
   "react",
 ]
-license = { text = "AGPL 3, EUPL 1.2" }
+license = "AGPL-3.0-or-later"
 authors = [
   { name = "Andreas Motl", email = "andreas.motl@panodata.org" },
 ]
@@ -41,8 +41,6 @@ classifiers = [
   "Intended Audience :: Education",
   "Intended Audience :: Information Technology",
   "Intended Audience :: Telecommunications Industry",
-  "License :: OSI Approved :: European Union Public Licence 1.2 (EUPL 1.2)",
-  "License :: OSI Approved :: GNU Affero General Public License v3",
   "Operating System :: MacOS :: MacOS X",
   "Operating System :: POSIX :: Linux",
   "Operating System :: Unix",
@@ -51,6 +49,7 @@ classifiers = [
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
   "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
   "Topic :: Communications",
   "Topic :: Education",
   "Topic :: Scientific/Engineering :: GIS",
