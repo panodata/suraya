@@ -1,5 +1,5 @@
 # Stage OCI container images through GitHub Actions (GHA) to GitHub Container Registry (GHCR).
-# The image is available per `ghcr.io/panodata/grafana-suraya`.
+# The image is available per `ghcr.io/panodata/grafana-suraya-full`.
 name: "Release: Grafana OCI"
 
 on:
@@ -29,7 +29,7 @@ concurrency:
 
 # The name for the produced image at ghcr.io.
 env:
-  IMAGE_NAME: "panodata/grafana-suraya"
+  IMAGE_NAME: "panodata/grafana-suraya-full"
   RECIPE_PATH: "suraya/grafana"
 
 jobs:

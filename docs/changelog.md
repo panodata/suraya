@@ -3,7 +3,7 @@
 ## In progress
 
 - Todo: Add previous items
-- Grafana: Started publishing OCI images to `ghcr.io/panodata/grafana-suraya`
+- Grafana: Started publishing OCI images to `ghcr.io/panodata/grafana-suraya-full`
 - Grafana: Fixed `suraya.grafana.mk build`
   `ERROR: failed to build: failed to solve: circular dependency detected on stage: plugins`
 - Grafana: grafana-databricks-datasource 404
