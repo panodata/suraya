@@ -7,119 +7,119 @@
     },
     {
       "slug": "alexanderzobnin-zabbix-app",
-      "version": "4.6.1"
+      "version": "6.3.0"
     },
     {
       "slug": "dlopes7-appdynamics-datasource",
-      "version": "3.10.4"
+      "version": "3.12.2"
     },
     {
       "slug": "grafana-athena-datasource",
-      "version": "3.0.0"
+      "version": "3.2.0"
     },
     {
       "slug": "grafana-bigquery-datasource",
-      "version": "2.0.1"
+      "version": "3.1.5"
     },
     {
       "slug": "grafana-clickhouse-datasource",
-      "version": "4.5.1"
+      "version": "4.15.0"
     },
     {
       "slug": "grafana-clock-panel",
-      "version": "2.1.8"
+      "version": "3.2.2"
     },
     {
       "slug": "grafana-cloudflare-datasource",
-      "version": "0.1.2-preview"
+      "version": "0.2.1-preview"
     },
     {
       "slug": "grafana-datadog-datasource",
-      "version": "3.12.4"
+      "version": "3.17.1"
     },
     {
       "slug": "grafana-dynatrace-datasource",
-      "version": "3.21.4"
+      "version": "3.26.3"
     },
     {
       "slug": "grafana-github-datasource",
-      "version": "2.0.1"
+      "version": "2.8.0"
     },
     {
       "slug": "grafana-gitlab-datasource",
-      "version": "2.3.11"
+      "version": "2.4.1"
     },
     {
       "slug": "grafana-googlesheets-datasource",
-      "version": "2.0.1"
+      "version": "2.5.0"
     },
     {
       "slug": "grafana-honeycomb-datasource",
-      "version": "2.7.7"
+      "version": "2.15.0"
     },
     {
       "slug": "grafana-iot-sitewise-datasource",
-      "version": "1.25.2"
+      "version": "2.6.0"
     },
     {
       "slug": "grafana-iot-twinmaker-app",
-      "version": "2.0.0"
+      "version": "2.1.5"
     },
     {
       "slug": "grafana-jira-datasource",
-      "version": "1.11.4"
+      "version": "2.6.1"
     },
     {
       "slug": "grafana-mongodb-datasource",
-      "version": "1.22.8"
+      "version": "1.26.5"
     },
     {
       "slug": "grafana-newrelic-datasource",
-      "version": "4.6.8"
+      "version": "4.6.17"
     },
     {
       "slug": "grafana-opensearch-datasource",
-      "version": "2.22.3"
+      "version": "2.33.1"
     },
     {
       "slug": "grafana-oracle-datasource",
-      "version": "2.10.4"
+      "version": "3.4.1"
     },
     {
       "slug": "grafana-redshift-datasource",
-      "version": "1.20.0"
+      "version": "2.5.0"
     },
     {
       "slug": "grafana-salesforce-datasource",
-      "version": "1.7.8"
+      "version": "1.7.19"
     },
     {
       "slug": "grafana-saphana-datasource",
-      "version": "1.7.5"
+      "version": "1.7.17"
     },
     {
       "slug": "grafana-servicenow-datasource",
-      "version": "2.12.14"
+      "version": "2.14.3"
     },
     {
       "slug": "grafana-splunk-datasource",
-      "version": "5.4.1"
+      "version": "5.8.19"
     },
     {
       "slug": "grafana-splunk-monitoring-datasource",
-      "version": "1.7.10"
+      "version": "1.8.9"
     },
     {
       "slug": "grafana-timestream-datasource",
-      "version": "2.9.13"
+      "version": "2.13.0"
     },
     {
       "slug": "grafana-wavefront-datasource",
-      "version": "2.5.8"
+      "version": "2.5.17"
     },
     {
       "slug": "grafana-x-ray-datasource",
-      "version": "2.13.1"
+      "version": "2.17.0"
     },
     {
       "slug": "marcusolsson-gantt-panel",
@@ -139,7 +139,7 @@
     },
     {
       "slug": "netsage-sankey-panel",
-      "version": "1.1.3"
+      "version": "1.1.4"
     },
     {
       "slug": "operato-windrose-panel",
@@ -155,35 +155,67 @@
     },
     {
       "slug": "simpod-json-datasource",
-      "version": "0.6.6"
+      "version": "0.6.7"
     },
     {
       "slug": "volkovlabs-echarts-panel",
-      "version": "6.5.0"
+      "version": "7.2.4"
     },
     {
       "slug": "volkovlabs-form-panel",
-      "version": "5.0.0"
+      "version": "6.3.2"
     },
     {
       "slug": "volkovlabs-grapi-datasource",
-      "version": "3.4.0"
+      "version": "3.6.0"
     },
     {
       "slug": "volkovlabs-image-panel",
-      "version": "6.2.0"
+      "version": "7.3.0"
     },
     {
       "slug": "volkovlabs-rss-datasource",
-      "version": "4.3.0"
+      "version": "4.4.0"
     },
     {
       "slug": "volkovlabs-table-panel",
-      "version": "2.0.0"
+      "version": "3.6.3"
     },
     {
       "slug": "volkovlabs-variable-panel",
+      "version": "5.1.3"
+    },
+    {
+      "slug": "volkovlabs-echarts-panel",
+      "version": "7.2.4"
+    },
+    {
+      "slug": "volkovlabs-form-panel",
+      "version": "6.3.2"
+    },
+    {
+      "slug": "volkovlabs-links-panel",
+      "version": "2.6.0"
+    },
+    {
+      "slug": "volkovlabs-image-panel",
+      "version": "7.3.0"
+    },
+    {
+      "slug": "volkovlabs-rss-datasource",
+      "version": "4.4.0"
+    },
+    {
+      "slug": "volkovlabs-grapi-datasource",
       "version": "3.6.0"
+    },
+    {
+      "slug": "volkovlabs-table-panel",
+      "version": "3.6.3"
+    },
+    {
+      "slug": "volkovlabs-variable-panel",
+      "version": "5.1.3"
     }
   ]
 }
