@@ -102,10 +102,6 @@
       "version": "2.12.14"
     },
     {
-      "slug": "grafana-snowflake-datasource",
-      "version": "1.12.4"
-    },
-    {
       "slug": "grafana-splunk-datasource",
       "version": "5.4.1"
     },

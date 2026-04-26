@@ -135,7 +135,6 @@ grafana-redshift-datasource @ 1.20.0
 grafana-salesforce-datasource @ 1.7.8
 grafana-saphana-datasource @ 1.7.5
 grafana-servicenow-datasource @ 2.12.14
-grafana-snowflake-datasource @ 1.12.4
 grafana-splunk-datasource @ 5.4.1
 grafana-splunk-monitoring-datasource @ 1.7.10
 grafana-timestream-datasource @ 2.9.13
