@@ -4,6 +4,6 @@ services:
       context: ../..
       dockerfile: suraya/grafana/Dockerfile
       additional_contexts:
-        module: suraya/grafana
+        module: .
     entrypoint: ""
     command: selftest.sh
