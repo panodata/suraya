@@ -10,7 +10,6 @@
 
 # Define Grafana and Python versions.
 ARG GRAFANA_VERSION="13.0.1"
-ARG PYTHON_VERSION="3.14"
 
 
 # Build Python package from working tree.
@@ -25,7 +24,7 @@ RUN python -m pip install build
 RUN python -m build
 
 
-FROM docker.io/python:${PYTHON_VERSION}-slim-bookworm AS plugins
+FROM docker.io/python:3.14-slim-bookworm AS plugins
 
 # Configure operating system, and `pip` and `uv` package managers.
 ENV DEBIAN_FRONTEND=noninteractive
@@ -33,7 +32,6 @@ ENV TERM=linux
 ENV PIP_ROOT_USER_ACTION=ignore
 ENV UV_COMPILE_BYTECODE=true
 ENV UV_LINK_MODE=copy
-ENV UV_PYTHON=${PYTHON_VERSION}
 ENV UV_SYSTEM_PYTHON=true
 
 # Install prerequisites.
@@ -42,7 +40,7 @@ RUN apt-get --yes install --no-install-recommends --no-install-suggests p7zip-fu
 
 # Install `uv` package manager.
 # https://docs.astral.sh/uv/guides/integration/docker/#installing-uv
-COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /usr/local/bin/
+COPY --from=ghcr.io/astral-sh/uv:0.11.8 /uv /uvx /usr/local/bin/
 
 ARG SOURCE_DIR=/src
 ARG CACHE_DIR=/root/.cache
