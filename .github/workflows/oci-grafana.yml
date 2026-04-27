@@ -89,7 +89,8 @@ jobs:
             ghcr.io/${{ env.IMAGE_NAME }}
           # Generate OCI image tags based on the following events/attributes
           tags: |
-            type=ref,event=branch
+            type=ref,event=branch,enable=${{ inputs.grafana_version == '' }}
+            type=raw,value=${{ inputs.grafana_version }},enable=${{ inputs.grafana_version != '' }}
             type=ref,event=pr
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
@@ -129,7 +130,7 @@ jobs:
           build-contexts: module=${{ env.RECIPE_PATH }}
           file: ${{ env.RECIPE_PATH }}/Dockerfile
           platforms: linux/amd64,linux/arm64
-          tags: ${{ steps.meta.outputs.tags }},${{ inputs.grafana_version }}
+          tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           push: ${{ ! (startsWith(github.actor, 'dependabot') || github.event.pull_request.head.repo.fork ) }}
           cache-from: type=gha
