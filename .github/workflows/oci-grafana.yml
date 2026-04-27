@@ -29,7 +29,7 @@ on:
 
 # Cancel in-progress jobs when pushing to the same branch.
 concurrency:
-  cancel-in-progress: true
+  cancel-in-progress: ${{ !contains(github.ref, 'main')}}
   group: ${{ github.workflow }}-${{ github.ref }}
 
 # The name for the produced image at ghcr.io.
