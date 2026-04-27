@@ -32,7 +32,7 @@ services:
     restart: unless-stopped
 
   cratedb-cockpit:
-    image: surister/cratedbaltadmin:0.3.3
+    image: surister/cratedbaltadmin:0.3.4
     ports:
       - "4201:80"
     restart: unless-stopped
