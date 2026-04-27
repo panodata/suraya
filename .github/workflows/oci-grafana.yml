@@ -21,6 +21,11 @@ on:
 
   # Allow job to be triggered manually.
   workflow_dispatch:
+    inputs:
+      grafana_version:
+        description: 'Grafana version number'
+        required: false
+        type: string
 
 # Cancel in-progress jobs when pushing to the same branch.
 concurrency:
@@ -29,6 +34,7 @@ concurrency:
 
 # The name for the produced image at ghcr.io.
 env:
+  GRAFANA_VERSION: ${{ inputs.grafana_version }}
   IMAGE_NAME: "panodata/grafana-suraya-full"
   RECIPE_PATH: "suraya/grafana"
 

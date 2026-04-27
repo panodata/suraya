@@ -325,6 +325,10 @@ def build(image: str):
     """
     Build OCI image.
     """
+    more_args = []
+    if "GRAFANA_VERSION" in os.environ:
+        more_args += ["--build-arg", f"GRAFANA_VERSION={os.environ['GRAFANA_VERSION']}"]
+
     os.environ["BUILDKIT_PROGRESS"] = "plain"
     os.environ["DOCKER_BUILDKIT"] = "1"
 
@@ -337,10 +341,12 @@ def build(image: str):
             folder / "Dockerfile",
             "--build-context",
             f"module={folder}",
+            *more_args,
             "--tag",
             image,
             ".",
-        ]
+        ],
+        env=os.environ,
     )
 
 

@@ -2,6 +2,8 @@
 
 ## In progress
 
+- Grafana: Allowed building from any Grafana OCI image
+
 ## v0.0.1, 2026-04-26
 
 - Grafana: Fixed builder `python -m suraya.grafana.mk build`
