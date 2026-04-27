@@ -68,7 +68,7 @@
 }
 ```
 
-## Jupyter
+## Notebooks
 
 ### General
 
@@ -90,3 +90,7 @@
 - https://github.com/jupyter-server/jupyter_ydoc
 - https://github.com/jupyterlab/jupyter-collaboration
 - https://github.com/deshaw/jupyterlab-execute-time
+
+### With LLM
+
+- https://github.com/lfnovo/open-notebook
