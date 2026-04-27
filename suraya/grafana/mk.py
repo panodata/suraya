@@ -326,7 +326,7 @@ def build(image: str):
     Build OCI image.
     """
     more_args = []
-    if "GRAFANA_VERSION" in os.environ:
+    if os.environ.get("GRAFANA_VERSION"):
         more_args += ["--build-arg", f"GRAFANA_VERSION={os.environ['GRAFANA_VERSION']}"]
 
     os.environ["BUILDKIT_PROGRESS"] = "plain"
