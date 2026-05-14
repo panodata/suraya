@@ -3,7 +3,7 @@
 services:
 
   nginx:
-    image: nginx:1.29
+    image: nginx:1.31
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
       - ./index.html:/srv/index.html
