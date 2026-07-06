@@ -29,12 +29,11 @@ on:
 
 # Cancel in-progress jobs when pushing to the same branch.
 concurrency:
-  cancel-in-progress: true
+  cancel-in-progress: ${{ !contains(github.ref, 'main')}}
   group: ${{ github.workflow }}-${{ github.ref }}
 
 # The name for the produced image at ghcr.io.
 env:
-  GRAFANA_VERSION: ${{ inputs.grafana_version }}
   IMAGE_NAME: "panodata/grafana-suraya-full"
   RECIPE_PATH: "suraya/grafana"
 
@@ -48,6 +47,14 @@ jobs:
         with:
           fetch-depth: 0
           fetch-tags: true
+
+      - name: Propagate Grafana version (nightly)
+        if: ${{ github.event_name == 'schedule' }}
+        run: echo "GRAFANA_VERSION=nightly" >> $GITHUB_ENV
+
+      - name: Propagate Grafana version (pinned)
+        if: ${{ inputs.grafana_version }}
+        run: echo "GRAFANA_VERSION=${{ inputs.grafana_version }}" >> $GITHUB_ENV
 
       - name: Build wheel package
         run: |
@@ -80,6 +87,14 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Propagate Grafana version (nightly)
+        if: ${{ github.event_name == 'schedule' }}
+        run: echo "GRAFANA_VERSION=nightly" >> $GITHUB_ENV
+
+      - name: Propagate Grafana version (pinned)
+        if: ${{ inputs.grafana_version }}
+        run: echo "GRAFANA_VERSION=${{ inputs.grafana_version }}" >> $GITHUB_ENV
+
       - name: Define image name and tags
         id: meta
         uses: docker/metadata-action@v6
@@ -89,7 +104,8 @@ jobs:
             ghcr.io/${{ env.IMAGE_NAME }}
           # Generate OCI image tags based on the following events/attributes
           tags: |
-            type=ref,event=branch
+            type=ref,event=branch,enable=${{ inputs.grafana_version == '' }}
+            type=raw,value=${{ inputs.grafana_version }},enable=${{ inputs.grafana_version != '' }}
             type=ref,event=pr
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
@@ -129,7 +145,7 @@ jobs:
           build-contexts: module=${{ env.RECIPE_PATH }}
           file: ${{ env.RECIPE_PATH }}/Dockerfile
           platforms: linux/amd64,linux/arm64
-          tags: ${{ steps.meta.outputs.tags }},${{ inputs.grafana_version }}
+          tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           push: ${{ ! (startsWith(github.actor, 'dependabot') || github.event.pull_request.head.repo.fork ) }}
           cache-from: type=gha
