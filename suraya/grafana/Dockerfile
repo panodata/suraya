@@ -24,7 +24,7 @@ RUN python -m pip install build
 RUN python -m build
 
 
-FROM docker.io/python:3.14-slim-bookworm AS plugins
+FROM docker.io/python:3.15-slim-bookworm AS plugins
 
 # Configure operating system, and `pip` and `uv` package managers.
 ENV DEBIAN_FRONTEND=noninteractive
